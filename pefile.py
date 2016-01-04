@@ -31,7 +31,7 @@ import struct
 import time
 import math
 import re
-import exceptions
+import builtins
 import string
 import array
 import mmap
@@ -961,7 +961,7 @@ class Structure:
                     if key == 'TimeDateStamp' or key == 'dwTimeStamp':
                         try:
                             val_str += ' [%s UTC]' % time.asctime(time.gmtime(val))
-                        except exceptions.ValueError as e:
+                        except builtins.ValueError as e:
                             val_str += ' [INVALID TIME]'
                 else:
                     val_str = ''.join([c for c in str(val) if c != '\0'])
@@ -989,7 +989,7 @@ class Structure:
                     if key == 'TimeDateStamp' or key == 'dwTimeStamp':
                         try:
                             val = '0x%-8X [%s UTC]' % (val, time.asctime(time.gmtime(val)))
-                        except exceptions.ValueError as e:
+                        except builtins.ValueError as e:
                             val = '0x%-8X [INVALID TIME]' % val
                 else:
                     val = ''.join([c for c in str(val) if c != '\0'])
